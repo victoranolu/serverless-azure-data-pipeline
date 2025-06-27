@@ -1,0 +1,12 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash log files
+crash.log
+
+# Sensitive variable overrides
+*.tfvars
+
+# Terraform plan output
+*.tfplan

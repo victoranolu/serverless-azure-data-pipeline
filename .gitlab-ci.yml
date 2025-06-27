@@ -1,0 +1,37 @@
+stages:
+  - validate
+  - plan
+  - apply
+
+variables:
+  TF_IN_AUTOMATION: "true"
+  TF_INPUT: "false"
+
+
+cache:
+  paths:
+    - .terraform/
+
+before_script:
+  - terraform --version
+  - terraform init -input=false
+
+validate:
+  stage: validate
+  script:
+    - terraform fmt -check
+    - terraform validate
+
+plan:
+  stage: plan
+  script:
+    - terraform plan -out=tfplan
+  artifacts:
+    paths:
+      - tfplan
+
+apply:
+  stage: apply
+  when: manual   
+  script:
+    - terraform apply -auto-approve tfplan
