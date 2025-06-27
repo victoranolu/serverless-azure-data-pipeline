@@ -1,4 +1,12 @@
-image: hashicorp/terraform:1.5.0
+image: ubuntu:22.04
+
+before_script:
+  - apt-get update -qq && apt-get install -y wget unzip
+  - wget https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
+  - unzip terraform_1.5.0_linux_amd64.zip
+  - mv terraform /usr/local/bin/
+  - terraform --version
+  - terraform init -input=false
 
 stages:
   - validate
@@ -13,9 +21,9 @@ cache:
   paths:
     - .terraform/
 
-before_script:
-  - terraform --version
-  - terraform init -input=false
+# before_script:
+#   - terraform --version
+#   - terraform init -input=false
 
 validate:
   stage: validate
