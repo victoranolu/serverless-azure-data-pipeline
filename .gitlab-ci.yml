@@ -1,4 +1,4 @@
-image: ruby:3.1
+image: hashicorp/terraform:1.5.0
 
 stages:
   - validate
@@ -15,11 +15,6 @@ cache:
   expire_in: 1 hour
 
 before_script:
-  - apt-get update -qq
-  - apt-get install -y wget unzip
-  - wget https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip
-  - unzip terraform_1.5.0_linux_amd64.zip
-  - mv terraform /usr/local/bin/
   - terraform --version
   - terraform init -input=false
 
