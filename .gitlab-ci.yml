@@ -7,6 +7,7 @@ before_script:
   - unzip terraform_1.5.0_linux_amd64.zip
   - mv terraform /usr/local/bin/
   - terraform --version
+  - terraform init -input=false
 
 stages:
   - validate
@@ -23,9 +24,9 @@ cache:
     - .terraform/
   expire_in: 1 hour
 
-before_script:
-  - terraform --version
-  - terraform init -input=false
+# before_script:
+#   - terraform --version
+#   - terraform init -input=false
 
 
 validate:
