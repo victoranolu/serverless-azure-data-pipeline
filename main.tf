@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "terraform-rg" {
-  name = var.resource_group_name
+  name     = var.resource_group_name
   location = var.resource_group_location
   tags = {
     "enviroment" = "development"
@@ -29,19 +29,19 @@ resource "azurerm_storage_account" "dev_store" {
   location                 = azurerm_resource_group.terraform-rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-  account_kind = "StorageV2"
-  is_hns_enabled = "true"
+  account_kind             = "StorageV2"
+  is_hns_enabled           = "true"
 }
 
 resource "azurerm_data_factory_trigger_blob_event" "blob_event" {
-  name                = var.blob_event
-  data_factory_id     = azurerm_data_factory.data_factory.id
-  storage_account_id  = azurerm_storage_account.dev_store.id
-  events              = ["Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted"]
-  blob_path_ends_with = ".json"
+  name                  = var.blob_event
+  data_factory_id       = azurerm_data_factory.data_factory.id
+  storage_account_id    = azurerm_storage_account.dev_store.id
+  events                = ["Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted"]
+  blob_path_ends_with   = ".json"
   blob_path_begins_with = ".json"
-  ignore_empty_blobs  = true
-  activated           = true
+  ignore_empty_blobs    = true
+  activated             = true
 
   annotations = ["test1", "test2", "test3"]
   description = "blob event triggers"

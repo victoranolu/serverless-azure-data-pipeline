@@ -39,11 +39,11 @@ variable "tenant_id" {
 }
 
 variable "resource_group_name" {
-  type = string
+  type        = string
   description = "Name of the resource group"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.resource_group_name))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.resource_group_name))
     error_message = "Azure resource group name name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
@@ -51,11 +51,11 @@ variable "resource_group_name" {
 variable "resource_group_location" {
   type        = string
   description = "Location for the resource group"
-  
+
   validation {
     condition = contains([
       "eastus",
-      "westeurope", 
+      "westeurope",
       "southafricanorth",
       "uksouth",
       "centralus"
@@ -65,87 +65,87 @@ variable "resource_group_location" {
 }
 
 variable "data_factory_name" {
-  type = string
+  type        = string
   description = "Name of the data factory"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_factory_name))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_factory_name))
     error_message = "data factory name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "data_factory_pipeline" {
-  type = string
+  type        = string
   description = "Name of the data factory pipeline"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_factory_pipeline))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_factory_pipeline))
     error_message = "data factory pipeline name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "storage_account_name" {
-  type = string
+  type        = string
   description = "Name of the storage account"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.storage_account_name))
-    error_message = "storage account name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."    
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.storage_account_name))
+    error_message = "storage account name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "blob_event" {
-  type = string
+  type        = string
   description = "Name of the event that triggers by the blob"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.blob_event))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.blob_event))
     error_message = "Blob event name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "event_grid" {
-  type = string
+  type        = string
   description = "name of event grid"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.event_grid))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.event_grid))
     error_message = "event grid name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "service_plan" {
-  type = string
+  type        = string
   description = "name of service plan"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.service_plan))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.service_plan))
     error_message = "Service plan name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "function_app" {
-  type = string
+  type        = string
   description = "name of the function app"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.function_app))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.function_app))
     error_message = "Function app name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "data_lake" {
-  type = string
+  type        = string
   description = "name of the data lake"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_lake))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_lake))
     error_message = "Data Lake name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "data_synapse_admin" {
-  type = string
+  type        = string
   description = "Admin login for the SQL server"
 
   validation {
@@ -158,7 +158,7 @@ variable "data_synapse_password" {
   type        = string
   description = "Password for Synapse data connection"
   sensitive   = true
-  
+
   validation {
     condition = (
       length(var.data_synapse_password) >= 8 &&
@@ -171,21 +171,21 @@ variable "data_synapse_password" {
 }
 
 variable "data_stream" {
-  type = string
+  type        = string
   description = "name of the data stream"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_stream))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_stream))
     error_message = "Data stream name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
 
 variable "data_synapse" {
-  type = string
+  type        = string
   description = "name of the data synapse"
 
   validation {
-    condition = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_synapse))
+    condition     = can(regex("^[a-zA-Z][a-zA-Z0-9._-]*$", var.data_synapse))
     error_message = "Data Synapse name must be a valid string type starting with a letter and containing only letters, numbers, dots, underscores, and hyphens."
   }
 }
