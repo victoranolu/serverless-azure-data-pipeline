@@ -12,7 +12,6 @@ variables:
 cache:
   paths:
     - .terraform/
-  expire_in: 1 hour
 
 before_script:
   - terraform --version
